@@ -296,7 +296,7 @@ function init(data) {
     const shop = (prodList, tBill, lastProd) => {
         let totalBill = tBill;
         const prId = generateProductId();
-        let product = Object.is(latProd, undefined) ? lastProd : getProduct(prodList, prId);
+        let product = !Object.is(lastProd, undefined) ? lastProd : getProduct(prodList, prId);
         let productDetails = product.getDetails();
         rl.question(`You can buy - ${productDetails}.\n Do you want to buy this item <Y/N>? `.yellow, function (option) {
             const regexYes = new RegExp("y", "i"); 
@@ -306,13 +306,13 @@ function init(data) {
                 calculatePoints(product, totalBill);
                 console.log(`${player.name} you earned ${player.getCurrentScore()} points!`.bold);
                 if (player.score >= 500) {
-                    Object.defineProperty(Player, "status", {
+                    Object.defineProperty(player, "status", {
                         value: "Shopping Master"
                     });
                     exitWon();
                 } else {
                     let iCount = ++player.items;
-                    Object.defineProperty(Player, "items", {
+                    Object.defineProperty(player, "items", {
                         value: iCount
                     });
                     if (player.items < 10) {
