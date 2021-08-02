@@ -79,7 +79,6 @@ const loadProducts = (map, prodId) => {
                 const key = item[0];
                 const value = item[1];
 
-                // Create and assign an instance of Product to prodObj here
                 let prodObj = new Product();
 
                 if (prodObj != undefined && prodObj != null) {
@@ -109,7 +108,6 @@ const loadProducts = (map, prodId) => {
 };
 
 
-// Complete the loadMagicProducts function
 const loadMagicProducts = (map, prodId) => {
     let a = new Array();
     try {
@@ -203,10 +201,14 @@ function loadMasterData() {
 }
 
 // Complete this function
-const findProductById = (id) => {};
+const findProductById = (id) => {
+    
+};
 
 // Complete this function
-const generateProductId = () => {};
+const generateProductId = () => {
+    return Math.floor(Math.random() * 20)
+};
 
 
 const getProduct = (prodList, pId) => {
