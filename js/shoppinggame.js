@@ -1,20 +1,22 @@
 let gameComplete = false;
 // Define the three constants here
-
+const name="unknown";
+const score = 0;
+const items = 0;
 let player = {
-    name:"unknown",
-    score:0,
-    items:0,
+    name,
+    score,
+    items,  
     getCurrentScore: () =>
     {
         return player.score;
     },
     addPoints: (points) => {
-        player.score += points;
+        this.score = this.score + points;
     },
     deductPoints: (points) => 
     {
-        player.score -= points;
+        this.score = this.score - points;
     }
 }
 function Product(id, name, price, expiryDate){
