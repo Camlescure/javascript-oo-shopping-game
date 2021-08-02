@@ -1,20 +1,71 @@
 let gameComplete = false;
 // Define the three constants here
 
-// Define the player object here
+let player = {
+    name:"undefined",
+    score:0,
+    items:0,
+    getCurrentScore: () =>
+    {
+        return player.score;
+    },
+    addPoints: (points) => {
+        player.score += points;
+    },
+    deducePoints: (points) => 
+    {
+        player.score -= points;
+    }
+}
+function Product(id, name, price, expiryDate){
+    this.id = id;
+    this.name=name;
+    this.price=price;
+    this.expiryDate = expiryDate;
+}
 
-// Define the Product class - write the Constructor function for Product class here
+const dateDiff = (date1, date2) => {
+    var tmp = date1 - date2;
+    return Math.floor((tmp-diff.hour)/24);
+};
 
-// Complete the dateDiff function
-const dateDiff = (date1, date2) => {};
+Object.defineProperty(Product.prototype, "daysToExpire", {
+    get: function(){
+        return dateDiff(Product.prototype.expiryDate, Date.now());
+    }
+})
 
-// Here, use Object.defineProperty to create property - daysToExpire
+Product.prototype.getDetails = function(){
+    return `Product Name: ${this.name} , Product Price: ${this.price}`
+}
 
-// Add method getDetails to Product here
+function MagicProduct(id, name, price, expiryDate, points, isBonus){
+    Product.call(this, id, name, price, expiryDate);
+    this.points = points;
+    this.isBonus = isBonus;
+}
 
-// Define the MagicProduct class here
+MagicProduct.prototype.call = Object.create(Product.prototype);
 
-// Establish inheritance between Product() & MagicProduct() here
+class Rating{
+    constructor(){
+        this.rate="";
+    }
+
+    rating(value){
+        if(value > 1 && value <=4){
+            this.rate="OK";
+        }
+        else if(value >= 5 && value <= 7){
+            this.rate="GOOD";
+        } else if (value > 7){
+            this.rate="EXCEPTIONAL";
+        } else {
+            this.rate="BAD";
+        }
+
+    }
+}
 
 // Define Rating class here
 
@@ -318,6 +369,7 @@ function init(data) {
 
 
 
+const exp = require("constants");
     ///////////////////////////////////////////////////////////////
     const readline = require("readline");
     require('colors');
