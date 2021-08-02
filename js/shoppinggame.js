@@ -2,7 +2,7 @@ let gameComplete = false;
 // Define the three constants here
 
 let player = {
-    name:"undefined",
+    name:"unknown",
     score:0,
     items:0,
     getCurrentScore: () =>
@@ -12,7 +12,7 @@ let player = {
     addPoints: (points) => {
         player.score += points;
     },
-    deducePoints: (points) => 
+    deductPoints: (points) => 
     {
         player.score -= points;
     }
@@ -25,15 +25,15 @@ function Product(id, name, price, expiryDate){
 }
 
 const dateDiff = (date1, date2) => {
-    var tmp = date1 - date2;
-    return Math.floor((tmp-diff.hour)/24);
+    let timeDiff = Math.abs(date2.getTime() - date1.getTime());
+    return Math.ceil(timeDiff / (1000 * 3600 * 24));
 };
 
-Object.defineProperty(Product.prototype, "daysToExpire", {
-    get: function(){
-        return dateDiff(Product.prototype.expiryDate, Date.now());
+Object.defineProperty(Product.prototype, 'daysToExpire', {
+    get: function () {
+        return dateDiff(this.expiryDate, new Date());
     }
-})
+});
 
 Product.prototype.getDetails = function(){
     return `Product Name: ${this.name} , Product Price: ${this.price}`
@@ -45,14 +45,14 @@ function MagicProduct(id, name, price, expiryDate, points, isBonus){
     this.isBonus = isBonus;
 }
 
-MagicProduct.prototype.call = Object.create(Product.prototype);
+MagicProduct.prototype = Object.create(Product.prototype);
 
 class Rating{
     constructor(){
         this.rate="";
     }
 
-    rating(value){
+    set rating(value){
         if(value > 1 && value <=4){
             this.rate="OK";
         }
