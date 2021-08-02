@@ -6,19 +6,17 @@ const items = 0;
 let player = {
     name,
     score,
-    items,  
-    getCurrentScore: () =>
-    {
+    items,
+    getCurrentScore() {
         return this.score;
     },
-    addPoints: (points) => {
+    addPoints(points) {
         this.score = this.score + points;
     },
-    deductPoints: (points) => 
-    {
+    deductPoints(points) {
         this.score = this.score - points;
     }
-}
+};
 function Product(id, name, price, expiryDate){
     this.id = id;
     this.name=name;
